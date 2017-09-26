@@ -8,6 +8,7 @@ class TestBus < MiniTest::Test
   def setup()
     @first_bus = Bus.new(22, "Ocean Terminal")
     @passenger1 = Person.new("Bill Oddie", 102)
+    @passenger2 = Person.new("Charlie Chook", 55)
 
   end
 
@@ -30,8 +31,10 @@ class TestBus < MiniTest::Test
   end
 
   def test_bus_drop_off()
+    @first_bus.bus_pick_up(@passenger1)
+    @first_bus.bus_pick_up(@passenger2)
     actual = @first_bus.bus_drop_off(@passenger1)
-    expected = []
+    expected = [@passenger2]
     assert_equal(expected, actual)
   end
 
