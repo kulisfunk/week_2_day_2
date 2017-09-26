@@ -1,11 +1,13 @@
 require 'minitest/autorun'
 require 'minitest/rg'
 require_relative '../bus'
+require_relative '../person'
 
 class TestBus < MiniTest::Test
 
   def setup()
-    @first_bus = Bus.new(22, "Ocean Terminal", [])
+    @first_bus = Bus.new(22, "Ocean Terminal")
+    @passenger1 = Person.new("Bill Oddie", 102)
 
   end
 
@@ -22,13 +24,13 @@ class TestBus < MiniTest::Test
   end
 
   def test_bus_pick_up()
-    actual = @first_bus.bus_pick_up("Bill Oddie")
-    expected = ["Bill Oddie"]
+    actual = @first_bus.bus_pick_up(@passenger1)
+    expected = [@passenger1]
     assert_equal(expected, actual)
   end
 
   def test_bus_drop_off()
-    actual = @first_bus.bus_drop_off("Bill Oddie")
+    actual = @first_bus.bus_drop_off(@passenger1)
     expected = []
     assert_equal(expected, actual)
   end

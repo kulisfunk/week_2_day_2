@@ -1,8 +1,8 @@
 class Bus
-  def initialize(route_number, destination, passengers)
+  def initialize(route_number, destination)
     @route = route_number
     @destination = destination
-    @passengers = passengers
+    @passengers = []
   end
 
   def drive()
@@ -24,7 +24,7 @@ class Bus
   end
 
   def empty_bus()
-    @passengers = []
+    @passengers.clear
     return
   end
 
